@@ -3,3 +3,6 @@
 ```npm run setup```
 
 ```npm start```
+
+
+use ```MOCK_DATA.txt``` to upload for sample data
