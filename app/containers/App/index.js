@@ -142,7 +142,11 @@ export default class App extends Component {
         >
           <meta name="description" content="The Table Search application" />
         </Helmet>
-        <p>Note: By Default the delemeter passed to server is <b>,</b> we changed it from Delemeter: input </p>
+        <b>Note:</b>
+        <ul>
+          <li>By Default the delemeter passed to server is <b>','</b> we  can change it from Delemeter: input</li>
+          <li>Use <b>MOCK_DATA.txt</b> for upload</li>
+        </ul>
         <UploadWrapper>
           <Dropzone onDrop={this.onDrop}>
             {({ getRootProps, getInputProps }) => (
