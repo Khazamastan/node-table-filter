@@ -170,7 +170,7 @@ export default class App extends Component {
           </p>
         </FilterContainer>
         <FilterContainer>
-          <h1>User</h1>
+          <h1>User List</h1>
           {!loading && data.length ? <p>Showing <b>{filteredData.length}</b> of <b>{data.length}</b></p> : null}
         </FilterContainer>
         <FilterContainer>
