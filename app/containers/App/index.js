@@ -56,7 +56,7 @@ export default class App extends Component {
     this.state = {
       loading: false,
       query: '',
-      delemeter: ',',
+      delimiter: ',',
       perPage: 2,
       data: [],
       filteredData: [],
@@ -115,7 +115,7 @@ export default class App extends Component {
     const formData = new FormData();
     this.setState({ loading: true });
     formData.append('file', acceptedFiles[0]);
-    formData.append('delemeter', this.state.delemeter);
+    formData.append('delimiter', this.state.delimiter);
     fetch('/api/upload', {
       method: 'POST',
       body: formData,
@@ -131,7 +131,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { perPage, loading, error, delemeter } = this.state;
+    const { perPage, loading, error, delimiter } = this.state;
     let { filteredData } = this.state;
     filteredData = filteredData.slice(0, perPage);
     return (
@@ -144,7 +144,7 @@ export default class App extends Component {
         </Helmet>
         <b>Note:</b>
         <ul>
-          <li>By Default the delemeter passed to server is <b>','</b> we  can change it from Delemeter: input</li>
+          <li>By Default the delimiter passed to server is <b>','</b> we  can change it from Delimiter: input</li>
           <li>Use <b>MOCK_DATA.txt</b> for upload</li>
         </ul>
         <UploadWrapper>
@@ -159,13 +159,13 @@ export default class App extends Component {
         </UploadWrapper>
         <FilterContainer>
           <p>
-            Delemeter:
+            Delimiter:
             <Input
               type="text"
-              placeholder="Delemeter"
-              value={delemeter}
+              placeholder="Delimiter"
+              value={delimiter}
               className="search"
-              onChange={e => this.setState({ delemeter: e.target.value })}
+              onChange={e => this.setState({ delimiter: e.target.value })}
             />
           </p>
         </FilterContainer>

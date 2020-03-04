@@ -48,8 +48,8 @@ function getExtension(fileName){
 app.post('/api/upload', (req, res) => {
   /** convert req buffer into csv string ,
    *   "csvfile" is the name of my file given at name attribute in input tag */
-  const delemeter = `${req.body.delemeter.toString()}`;
-  console.log(delemeter, req.file.originalname)
+  const delimiter = `${req.body.delimiter.toString()}`;
+  console.log(delimiter, req.file.originalname)
   const ext = getExtension(req.file.originalname);
   const isValidFile = ['txt', 'csv'].includes(ext);
   console.log(ext, isValidFile)
@@ -58,7 +58,7 @@ app.post('/api/upload', (req, res) => {
   }
   const array = fs
     .readFileSync(req.file.path, 'utf8')
-    .split(delemeter)
+    .split(delimiter)
   const newArr = array.map(row => {
     const rowArray = row.split('|');
     const [name, address, city, country, pincode] = rowArray;
