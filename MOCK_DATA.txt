@@ -997,4 +997,4 @@ Barr|3 Hallows Street|Kyperoúnta|CY|65044-1547,
 Robinet|846 Pierstorff Pass|Casal dos Bernardos|PT|57520-0467,
 Manda|0894 Orin Road|Vovchans’k|UA|36987-3144,
 Clementia|7 Longview Terrace|Veguitas|VE|54868-4857,
-Agretha|0 Caliangt Plaza|Senekal|ZA|54575-088,
+Agretha|0 Caliangt Plaza|Senekal|ZA|54575-088

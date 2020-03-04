@@ -131,7 +131,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { perPage, loading, error, delimiter } = this.state;
+    const { perPage, loading, error, delimiter, data } = this.state;
     let { filteredData } = this.state;
     filteredData = filteredData.slice(0, perPage);
     return (
@@ -169,7 +169,10 @@ export default class App extends Component {
             />
           </p>
         </FilterContainer>
-        <h1>User</h1>
+        <FilterContainer>
+          <h1>User</h1>
+          {!loading && data.length ? <p>Showing <b>{filteredData.length}</b> of <b>{data.length}</b></p> : null}
+        </FilterContainer>
         <FilterContainer>
           <p>
             <Input

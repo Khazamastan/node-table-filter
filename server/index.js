@@ -57,18 +57,22 @@ app.post('/api/upload', (req, res) => {
     res.sendStatus(404);
   }
   const array = fs
-    .readFileSync(req.file.path, 'utf8')
+    .readFileSync(req.file.path, 'utf8').trim()
     .split(delimiter)
-  const newArr = array.map(row => {
-    const rowArray = row.split('|');
-    const [name, address, city, country, pincode] = rowArray;
-    return {
-      name,
-      address,
-      city,
-      country,
-      pincode,
-    };
+    let newArr = [];
+   array.forEach((row ,i)=> {
+    if(row){
+      const rowArray = row.split('|');
+      const [name, address, city, country, pincode] = rowArray;
+      let rowObj =  {
+        name,
+        address,
+        city,
+        country,
+        pincode,
+      };
+      newArr.push(rowObj);
+    }
   });
   res.json(newArr);
 });

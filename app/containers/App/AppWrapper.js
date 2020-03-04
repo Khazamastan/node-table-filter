@@ -26,6 +26,7 @@ export const UploadWrapper = styled.div`
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items:center;
 `;
 
 
