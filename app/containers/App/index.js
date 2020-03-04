@@ -113,7 +113,7 @@ export default class App extends Component {
   onDrop = acceptedFiles => {
     console.log(acceptedFiles);
     const formData = new FormData();
-    this.setState({ loading: true });
+    this.setState({ loading: true, error: false});
     formData.append('file', acceptedFiles[0]);
     formData.append('delimiter', this.state.delimiter);
     fetch('/api/upload', {
@@ -195,7 +195,7 @@ export default class App extends Component {
         {!loading ? (
           <Table contacts={filteredData} headers={this.headers} />
         ) : (
-          <p>{<ErrorMessage>{error}</ErrorMessage> || 'Loading..'}</p>
+          <p>{error ? <ErrorMessage>{error}</ErrorMessage> : 'Loading..'}</p>
         )}
         <GlobalStyle />
       </AppWrapper>
