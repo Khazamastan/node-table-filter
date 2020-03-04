@@ -116,7 +116,7 @@ export default class App extends Component {
     this.setState({ loading: true });
     formData.append('file', acceptedFiles[0]);
     formData.append('delemeter', this.state.delemeter);
-    fetch('https://node-table-server.herokuapp.com/api/upload', {
+    fetch('/api/upload', {
       method: 'POST',
       body: formData,
     })
