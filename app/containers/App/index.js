@@ -16,7 +16,7 @@ import Input from 'components/Input';
 import Select from 'components/Select';
 import _ from 'lodash';
 import Dropzone from 'react-dropzone';
-import AppWrapper, { UploadWrapper, FilterContainer } from './AppWrapper';
+import AppWrapper, { UploadWrapper, FilterContainer, ErrorMessage } from './AppWrapper';
 import GlobalStyle from '../../global-styles';
 
 export default class App extends Component {
@@ -115,6 +115,7 @@ export default class App extends Component {
     const formData = new FormData();
     this.setState({ loading: true });
     formData.append('file', acceptedFiles[0]);
+    formData.append('delemeter', this.state.delemeter);
     fetch('/api/upload', {
       method: 'POST',
       body: formData,
@@ -124,6 +125,7 @@ export default class App extends Component {
         this.setState({ data: res, filteredData: res, loading: false });
       })
       .catch(res => {
+        debugger;
         this.setState({ error: 'There is an error while fetching data' });
       });
   };
@@ -140,6 +142,7 @@ export default class App extends Component {
         >
           <meta name="description" content="The Table Search application" />
         </Helmet>
+        <p>Note: By Default the delemeter passed to server is <b>,</b> we changed it from Delemeter: input </p>
         <UploadWrapper>
           <Dropzone onDrop={this.onDrop}>
             {({ getRootProps, getInputProps }) => (
@@ -185,7 +188,7 @@ export default class App extends Component {
         {!loading ? (
           <Table contacts={filteredData} headers={this.headers} />
         ) : (
-          <p>{error || 'Loading..'}</p>
+          <p>{<ErrorMessage>{error}</ErrorMessage> || 'Loading..'}</p>
         )}
         <GlobalStyle />
       </AppWrapper>

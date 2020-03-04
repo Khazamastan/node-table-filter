@@ -40,13 +40,25 @@ app.get('*.js', (req, res, next) => {
 const csvData = 'test';
 app.use(upload.single('file'));
 
+function getExtension(fileName){
+  var arr = fileName.split('.');
+  var extension = arr[arr.length-1];
+  return extension;
+}
 app.post('/api/upload', (req, res) => {
   /** convert req buffer into csv string ,
    *   "csvfile" is the name of my file given at name attribute in input tag */
+  const delemeter = `${req.body.delemeter.toString()}`;
+  console.log(delemeter, req.file.originalname)
+  const ext = getExtension(req.file.originalname);
+  const isValidFile = ['txt', 'csv'].includes(ext);
+  console.log(ext, isValidFile)
+  if(!isValidFile){
+    res.sendStatus(404);
+  }
   const array = fs
     .readFileSync(req.file.path, 'utf8')
-    .split(',')
-    .trim();
+    .split(delemeter)
   const newArr = array.map(row => {
     const rowArray = row.split('|');
     const [name, address, city, country, pincode] = rowArray;

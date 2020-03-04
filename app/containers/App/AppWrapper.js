@@ -12,8 +12,11 @@ const AppWrapper = styled.div`
 
 export const UploadWrapper = styled.div`
   > div {
+    margin-top: 40px;
     height: 200px;
     background: #f5f5f5;
+    border: 2px dotted #dadada;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,5 +27,10 @@ export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+
+export const ErrorMessage = styled.span`
+  color: red;
+`
 
 export default AppWrapper;
